@@ -41,6 +41,7 @@ gem 'acts_as_list'
 # allow haml for templating
 gem 'haml', '~> 4.0', '>= 4.0.7'
 
+gem 'dotenv-rails', groups: [:development, :test]
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
