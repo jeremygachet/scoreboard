@@ -11,5 +11,10 @@ permit_params :name, :company
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-
+    form title: 'Créer les equipes' do |f|
+        f.inputs do
+            f.input :name
+            f.input :company
+        end
+    end
 end
