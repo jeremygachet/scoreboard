@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @exo.name %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @exo.comment %>
+</p>
+
+<p>
+  <strong>Points:</strong>
+  <%= @exo.points %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @exo.position %>
+</p>
+
+<%= link_to 'Edit', edit_exo_path(@exo) %> |
+<%= link_to 'Back', exos_path %>

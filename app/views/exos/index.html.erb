@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Exos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Comment</th>
+      <th>Points</th>
+      <th>Position</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @exos.each do |exo| %>
+      <tr>
+        <td><%= exo.name %></td>
+        <td><%= exo.comment %></td>
+        <td><%= exo.points %></td>
+        <td><%= exo.position %></td>
+        <td><%= link_to 'Show', exo %></td>
+        <td><%= link_to 'Edit', edit_exo_path(exo) %></td>
+        <td><%= link_to 'Destroy', exo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Exo', new_exo_path %>
