@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :score_logs
   resources :exos
   resources :teams
   devise_for :users, ActiveAdmin::Devise.config

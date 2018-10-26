@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @score_log.name %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @score_log.comment %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @score_log.score %>
+</p>
+
+<p>
+  <strong>Published:</strong>
+  <%= @score_log.published %>
+</p>
+
+<%= link_to 'Edit', edit_score_log_path(@score_log) %> |
+<%= link_to 'Back', score_logs_path %>
