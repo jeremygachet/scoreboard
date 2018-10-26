@@ -35,6 +35,11 @@ gem 'devise'
 gem 'draper'
 gem 'pundit'
 
+# ordering
+gem 'acts_as_list'
+
+
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
