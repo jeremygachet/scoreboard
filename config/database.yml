@@ -82,8 +82,6 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+
 production:
-  <<: *default
-  database: scoreboard_production
-  username: scoreboard
-  password: <%= ENV['SCOREBOARD_DATABASE_PASSWORD'] %>
+   url: <%= ENV['DATABASE_URL'] %>
