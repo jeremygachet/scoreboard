@@ -47,6 +47,9 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'delayed_job'
 gem 'delayed_job_active_record'
 
+#serializer
+gem 'active_model_serializers', '~> 0.10.2'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

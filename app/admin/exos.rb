@@ -12,4 +12,26 @@ ActiveAdmin.register Exo do
 #   permitted
 # end
 
+
+collection_action :validate, method: [:get, :post] do
+end
+
+
+
+controller do
+
+    # validate an exercice page
+    def validate
+        @page_title = "Validez un exercice"
+        @teams = Team.all
+        @exos = Exo.all
+        respond_to do |format|
+        format.html {
+            render
+        }
+        end
+
+    end
+end
+
 end

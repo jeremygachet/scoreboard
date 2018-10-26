@@ -1,0 +1,9 @@
+#validation
+    %fieldset
+        %legend Choissisez bien...
+        %p
+            %label Sélectionnez une équipe
+            =select_tag "team", options_from_collection_for_select(@teams, "id", "name")
+        %p
+            %label Sélectionnez un exercice
+            =select_tag "exos", options_from_collection_for_select(@exos, "id", "name")
