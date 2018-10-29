@@ -7,12 +7,18 @@
     bottom: 1rem;
     background: rgba(0, 0, 0, 0.6);
     width: 20%;
-    height: 15rem;
+    height: 40rem;
     -webkit-border-radius: 1rem;
     -moz-border-radius: 1rem;
     border-radius: 1rem;
     padding: 1rem;
-    overflow: auto;
+    color: #ffffff;
+
+    .body{
+        overflow: auto;
+        height: 30rem;
+
+    }
     .card{
         padding-bottom: 0.5rem;
         margin-bottom: 0.5rem;

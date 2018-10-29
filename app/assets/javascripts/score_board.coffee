@@ -12,7 +12,6 @@ $(document).ready ->
     max_score = score.max_score
     #  boats = init_boats(score.score) if Object.keys(boats).length == 0
     place_boats(boats)
-    console.log 'score.score', score.score
     update_details(score.score)
 
 
@@ -55,7 +54,6 @@ $(document).ready ->
 
   place_boats = (boats) ->
     for id, boat of boats
-      console.log boat.score
       $('#boat-' + boat.id).css(left: boat_position(boat.score)+'%')
 
 
@@ -112,10 +110,7 @@ $(document).ready ->
   #format ag grid datas
   row_datas = (validations) ->
     rows_object = {}
-    console.log 'validations', validations
     for k,v of validations
-      console.log 'row exist ? ', !!rows_object[v.team.id]
-      console.log 'v ', v
 
       #init if does not exist
       unless  !!rows_object[v.team.id]
@@ -130,7 +125,6 @@ $(document).ready ->
 
 
   init_grid = (validations) ->
-    console.log row_datas(validations)
     agrid = document.querySelector('#grid-details')
     agOptions = {
       columnDefs: headers_columns(),
@@ -138,10 +132,8 @@ $(document).ready ->
       enableSorting: true
       enableFilter: true
       enableColResize: true
-      cacheQuickFilter: true
     }
 
-    console.log 'options', agOptions
     new agGrid.Grid(agrid, agOptions)
 
 
@@ -157,16 +149,13 @@ $(document).ready ->
 
 
   update_news_dom = (news) ->
-    nw = $('#news-widget')
+    nw = $('#news-widget > .body')
     tpl = nw.find('.card:eq(0)')
-    console.log news
-    console.log nw
 
     for key, article of news
       a = tpl.clone()
       a.find('.card-title').text(article.title)
       a.find('.card-text').html(article.content)
-      console.log !!article.link
       if !!article.link
         a.find('.card-link').attr('href', article.link).text(article.link)
       else
