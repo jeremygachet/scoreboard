@@ -3,7 +3,7 @@ module Api::V1
 
     # return last published score log
     def scores_history
-      render json: ScoreLog.where(published: true).order(id: :desc)
+      render json: ScoreLog.where(published: true).order(id: :desc).limit(200)
     end
 
     # return last published score log
