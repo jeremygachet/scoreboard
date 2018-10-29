@@ -30,6 +30,10 @@ gem 'bcrypt', '~> 3.1.7'
 #active admin
 gem 'activeadmin'
 
+#rich text editor
+gem 'activeadmin_quill_editor'
+gem 'activeadmin_addons'
+
 # Plus integrations with:
 gem 'devise'
 gem 'draper'
@@ -37,6 +41,7 @@ gem 'pundit'
 
 # ordering
 gem 'acts_as_list'
+
 
 # allow haml for templating
 gem 'haml'
@@ -63,7 +68,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 #select2
 gem 'jquery-rails'
-gem 'activeadmin_addons'
 
 
 group :development, :test do

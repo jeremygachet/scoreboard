@@ -1,4 +1,5 @@
 ActiveAdmin.register ScoreLog do
+    include Pundit
     actions :index, :show
 
 # See permitted parameters documentation:

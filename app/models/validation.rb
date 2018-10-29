@@ -13,11 +13,13 @@ class Validation < ApplicationRecord
         #delay
         value = ActiveModel::Serializer::CollectionSerializer.new(Validation.includes(:team, :exo).all, serializer: ValidationSerializer) 
         ScoreLog.create({
+            max_score: Exo.max_score,
             score: value
         })
 
     end
 
+    # update team total score 
     def update_team_total_score
         team.total_score = team.count_total_score
         team.save

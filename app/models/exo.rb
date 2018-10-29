@@ -7,4 +7,7 @@ class Exo < ApplicationRecord
         self[:name]+ ' - ' +self[:points].to_s
     end
 
+    def self.max_score
+        Exo.sum(:points)
+    end
 end

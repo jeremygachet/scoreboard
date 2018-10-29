@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_26_102304) do
+ActiveRecord::Schema.define(version: 2018_10_29_073719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,15 @@ ActiveRecord::Schema.define(version: 2018_10_26_102304) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "news", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.boolean "published"
+    t.datetime "published_datetime"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "score_logs", force: :cascade do |t|
     t.string "name"
     t.text "comment"
@@ -60,6 +69,7 @@ ActiveRecord::Schema.define(version: 2018_10_26_102304) do
     t.boolean "published"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "max_score"
   end
 
   create_table "teams", force: :cascade do |t|

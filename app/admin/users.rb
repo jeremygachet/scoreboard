@@ -1,4 +1,5 @@
 ActiveAdmin.register User do
+  include Pundit
   permit_params :email, :password, :password_confirmation
 
   index do
