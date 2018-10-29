@@ -3,4 +3,16 @@
 =javascript_include_tag "https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.noStyle.js"
 
 #details
-    #grid-details.ag-theme-material
+    %button#open-grid-details.btn.btn-light{'data-toggle': "modal", 'data-target':'#data-grid-modal' } Open Details
+    #data-grid-modal.modal.fade{role: 'dialog', 'aria-hidden': "true"}
+        .modal-dialog.modal-dialog-centered.modal-lg{role: "document"}
+            .modal-content
+                .modal-header
+                    %h5.modal-title 
+                        Score details
+                        %button.close{type: "button", 'data-dismiss': "modal", 'aria-label': "Close"}
+                            %span{'aria-hidden': "true"} &times;
+
+                .modal-body
+                #grid-details.ag-theme-material
+    
