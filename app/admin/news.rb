@@ -3,7 +3,7 @@ ActiveAdmin.register News do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
- permit_params :title, :content, :published, :published_datetime
+ permit_params :title, :content, :published, :published_datetime, :link
 #
 # or
 #
@@ -32,6 +32,7 @@ show do
         row :content do |n|
             raw( n.content)
         end
+        row :link
         row :published
         row :published_datetime
         row :created_at
@@ -47,6 +48,7 @@ form do |f|
     f.inputs do
         f.input :title
         f.input :content, as: :quill_editor
+        f.input :link
         f.input :published
         f.input :published_datetime, as: :date_time_picker
     end

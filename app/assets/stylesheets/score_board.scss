@@ -1,0 +1,35 @@
+// Place all the styles related to the score_board controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.hidden{
+    display: none;
+}
+#scoreboard{
+    position: relative;
+    display: flex;
+    width: 100%;
+    .boat{
+        width: 4rem;
+        height: 4rem;
+        background: #ff0000;
+        border: 1px solid #000000;
+        position: relative;
+        margin-bottom: 0.5rem;
+
+        .boat-name{
+            width: 4rem;
+            background: #fff000;
+        }
+    }
+    #sea{
+        width: 100%;
+        position: relative;
+    }
+    #map{
+        width: 10rem;
+        height: 20rem;
+        background: #00FF00;
+
+    }
+
+}

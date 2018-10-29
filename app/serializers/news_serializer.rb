@@ -1,3 +1,3 @@
 class NewsSerializer < ActiveModel::Serializer
-  attributes :id, :title, :content, :published, :published_datetime
+  attributes :id, :title, :content, :link, :published, :published_datetime
 end
