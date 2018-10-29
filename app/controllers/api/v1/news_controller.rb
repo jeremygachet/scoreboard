@@ -2,7 +2,7 @@ module Api::V1
   class NewsController < InheritedResources::Base
 
     def index
-      render json: News.all.order(published_datetime: :desc)
+      render json: News.where(published: true).all.order(published_datetime: :desc)
     end
 
     private
