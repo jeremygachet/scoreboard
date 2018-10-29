@@ -36,6 +36,7 @@ RESPONSE :
     "id": 14,
     "name": null,
     "comment": null,
+    "max_score": 165
     "score": [
         {
             "id": 9,
@@ -143,6 +144,7 @@ RESPONSE :
         "id": 14,
         "name": null,
         "comment": null,
+        "max_score": 165,
         "score": [
             {
                 "id": 9,
@@ -310,6 +312,22 @@ RESPONSE :
 ```
 
 
+### GET /api/v1/news
+return all published news order by published_datetime desc
+! no pager or validation !
 
+Response : 
+
+```json
+[
+    {
+        "id": 1,
+        "title": "test",
+        "content": "<p>cdscdsc</p><p>cdscds</p><p>vfd</p><p><strong>fdhfh</strong></p><ol><li>scacsa</li><li>csacsa</li><li>csac</li><li>sacsacsa</li><li>c</li></ol><pre class=\"ql-syntax ql-align-center\" spellcheck=\"false\">gfh\r\n</pre><blockquote>gfhgf</blockquote>",
+        "published": true,
+        "published_datetime": "2018-10-29T08:16:00.000Z"
+    }
+]
+``
 
 
