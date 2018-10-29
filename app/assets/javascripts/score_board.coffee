@@ -1,6 +1,7 @@
 scores = null
 score  = null
 boats  = {}
+exos = {}
 max_score = 0
 
 $(document).ready ->
@@ -11,6 +12,8 @@ $(document).ready ->
     max_score = score.max_score
     #  boats = init_boats(score.score) if Object.keys(boats).length == 0
     place_boats(boats)
+    console.log 'score.score', score.score
+    update_details(score.score)
 
 
 
@@ -79,10 +82,75 @@ $(document).ready ->
   , (1000 * 60 * 10)
 
 
+############################################ 
+            # detail
+############################################
+
+  update_details = (validations) ->
+    list_exos(validations)
+    init_grid(validations)
+
+
+  list_exos = (validations) ->
+    for k, v of validations
+      exos[v.exo.id] = v.exo
+    exos
+
+
+  #init ag grid headers
+  headers_columns = ->
+    columnDefs = [
+      {headerName: "team", field: "teamName"}
+    ]
+    for k,v of exos
+       columnDefs.push({headerName: v.name, field: 'e-'+v.id})
+    
+    columnDefs.push({headerName: 'Total Score', field: 'score'})
+
+    columnDefs
+
+  #format ag grid datas
+  row_datas = (validations) ->
+    rows_object = {}
+    console.log 'validations', validations
+    for k,v of validations
+      console.log 'row exist ? ', !!rows_object[v.team.id]
+      console.log 'v ', v
+
+      #init if does not exist
+      unless  !!rows_object[v.team.id]
+        rows_object[v.team.id] = {teamName: v.team.name}
+      #insert data
+      rows_object[v.team.id]['e-'+v.exo.id] = v.exo.points 
+      rows_object[v.team.id]['score'] = v.team.total_score
 
 
 
-########## news
+    Object.values(rows_object)
+
+
+  init_grid = (validations) ->
+    console.log row_datas(validations)
+    agrid = document.querySelector('#grid-details')
+    agOptions = {
+      columnDefs: headers_columns(),
+      rowData: row_datas(validations),
+      enableSorting: true
+      enableFilter: true
+      enableColResize: true
+      cacheQuickFilter: true
+    }
+
+    console.log 'options', agOptions
+    new agGrid.Grid(agrid, agOptions)
+
+
+
+
+
+#############################################
+            # news
+#############################################
  update_news = ->
     $.get '/api/v1/news', (news) ->
       update_news_dom(news)
