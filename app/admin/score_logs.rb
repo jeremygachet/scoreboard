@@ -21,6 +21,8 @@ ActiveAdmin.register ScoreLog do
         column :score
         column :created_at
         column :published
+        actions
+
     end
 
 
