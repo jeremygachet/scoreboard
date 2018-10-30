@@ -3,6 +3,7 @@ score  = null
 boats  = {}
 exos = {}
 max_score = 0
+agOptions = null
 
 $(document).ready ->
 
@@ -10,15 +11,19 @@ $(document).ready ->
 
   update_score_board = (score) ->
     max_score = score.max_score
-    #  boats = init_boats(score.score) if Object.keys(boats).length == 0
+    boats = filter_teams(score.score)
+    console.log boats
     place_boats(boats)
     update_details(score.score)
 
 
+  place_boats = (boats) ->
+    for id, boat of boats
+      $('#boat-' + boat.id).css( { left: boat_position(boat.total_score) + '%' } )
 
 
   boat_position = (score) ->
-    Math.ceil((score*100) / max_score)
+    Math.ceil((score * 100) / max_score)
 
 
   filter_teams = (validation) ->
@@ -27,9 +32,9 @@ $(document).ready ->
       teams[value.team.id] = value.team
     teams
 
-  init_boats = (teams) -> 
+  init_boats = (teams) ->
     for key, t of teams
-      boats[t.id] = 
+      boats[t.id] =
         id: t.id
         image: null
         team: t.name
@@ -41,7 +46,7 @@ $(document).ready ->
     boats
 
 
-  init_boat_dom = (boat) -> 
+  init_boat_dom = (boat) ->
     b = $('#boat-template').clone()
     b.attr('id', 'boat-' + boat.id )
        .attr('team-name', boat.name)
@@ -52,15 +57,11 @@ $(document).ready ->
     $('#sea').append(b)
     b
 
-  place_boats = (boats) ->
-    for id, boat of boats
-      $('#boat-' + boat.id).css(left: boat_position(boat.score)+'%')
 
 
   update_scores = ->
-    $.get '/api/v1/scores_history', (data) ->
-      scores = data
-      score  = data[0]
+    $.get '/api/v1/score', (data) ->
+      score  = data
       update_score_board(score)
 
     
@@ -73,11 +74,12 @@ $(document).ready ->
   init_teams()
   update_news()
 
-  # setTimeout  update_scores, (1000 * 60 * 10)
-  setInterval () ->  
+  # update datas, (1000 * 60 * 10) 10 minutes
+  setInterval () ->
     update_scores()
     update_news()
   , (1000 * 60 * 10)
+
 
 
 ############################################ 
@@ -86,7 +88,10 @@ $(document).ready ->
 
   update_details = (validations) ->
     list_exos(validations)
-    init_grid(validations)
+    if !!agOptions
+      refreshGrid(validations)
+    else
+      init_grid(validations)
 
 
   list_exos = (validations) ->
@@ -98,25 +103,25 @@ $(document).ready ->
   #init ag grid headers
   headers_columns = ->
     columnDefs = [
-      {headerName: "team", field: "teamName"}
+      { headerName: "team", field: "teamName" }
     ]
-    for k,v of exos
-       columnDefs.push({headerName: v.name, field: 'e-'+v.id})
+    for k, v of exos
+       columnDefs.push( { headerName: v.name, field: 'e-' + v.id } )
     
-    columnDefs.push({headerName: 'Total Score', field: 'score'})
+    columnDefs.push( { headerName: 'Total Score', field: 'score' } )
 
     columnDefs
 
   #format ag grid datas
   row_datas = (validations) ->
     rows_object = {}
-    for k,v of validations
+    for k, v of validations
 
       #init if does not exist
       unless  !!rows_object[v.team.id]
-        rows_object[v.team.id] = {teamName: v.team.name}
+        rows_object[v.team.id] = { teamName: v.team.name }
       #insert data
-      rows_object[v.team.id]['e-'+v.exo.id] = v.exo.points 
+      rows_object[v.team.id]['e-' + v.exo.id] = v.exo.points
       rows_object[v.team.id]['score'] = v.team.total_score
 
 
@@ -137,6 +142,13 @@ $(document).ready ->
     new agGrid.Grid(agrid, agOptions)
 
 
+  refreshGrid = (validations) ->
+    params = {
+      force: true
+    }
+    agOptions.api.setRowData(row_datas(validations))
+    agOptions.api.refreshCells(params)
+
 
 
 
@@ -151,6 +163,8 @@ $(document).ready ->
   update_news_dom = (news) ->
     nw = $('#news-widget > .body')
     tpl = nw.find('.card:eq(0)')
+
+    nw.empty()
 
     for key, article of news
       a = tpl.clone()
