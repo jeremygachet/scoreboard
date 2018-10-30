@@ -1,6 +1,12 @@
 // Place all the styles related to the score_board controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+    &.scoreboard{
+        background: image-url('krakathon_mapv2.jpg') no-repeat;
+        background-size: cover;
+    }
+}
 .hidden{
     display: none;
 }
@@ -28,10 +34,13 @@
     #map{
         width: 10rem;
         height: 20rem;
-        background: #00FF00;
 
     }
-
+    #details{
+            position: fixed;
+            bottom: 2rem;
+            left: 47%;
+    }
 
 
 }

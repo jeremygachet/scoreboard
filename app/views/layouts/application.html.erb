@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-balham.css">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
+  <body class='<%= @body_class||'' %>'>
 
     <%= yield %>
 
