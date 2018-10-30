@@ -36,14 +36,14 @@ body{
         height: 20rem;
 
     }
-    #details{
-            position: fixed;
-            bottom: 2rem;
-            left: 47%;
-    }
+   
 
 
 }
 #grid-details{
     height: 300px;
+}
+#open-grid-details{
+    position: fixed;
+    bottom: 2rem;
 }
