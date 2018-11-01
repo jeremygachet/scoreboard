@@ -21,6 +21,9 @@ gem 'uglifier', '>= 1.3.0'
 #ws caching
 gem 'actionpack-action_caching'
 
+#redis
+gem 'redis'
+gem 'redis-rails'
 
 
 # Use CoffeeScript for .coffee assets and views
