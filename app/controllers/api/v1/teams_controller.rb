@@ -4,7 +4,7 @@ module Api::V1
     caches_action :index, expires_in: 10.minutes
 
     def index
-      render json: Team.all.order(name: :asc)
+      render json: Team.all_cached
     end
 
     private

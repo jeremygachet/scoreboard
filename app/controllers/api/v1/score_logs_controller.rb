@@ -6,12 +6,12 @@ module Api::V1
 
     # return last published score log
     def scores_history
-      render json: ScoreLog.where(published: true).order(id: :desc).limit(200)
+      render json: ScoreLog.all_cached
     end
 
     # return last published score log
     def score
-      render json: ScoreLog.where(published: true).last
+      render json: ScoreLog.last_cached
     end
 
     private
