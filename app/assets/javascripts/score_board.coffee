@@ -72,12 +72,10 @@ $(document).ready ->
 
 
   init_teams()
-  update_news()
 
   # update datas, (1000 * 60 * 10) 10 minutes
   setInterval () ->
     update_scores()
-    update_news()
   , (1000 * 60 * 10)
 
 
@@ -152,32 +150,7 @@ $(document).ready ->
 
 
 
-#############################################
-            # news
-#############################################
- update_news = ->
-    $.get '/api/v1/news', (news) ->
-      update_news_dom(news)
 
-
-  update_news_dom = (news) ->
-    nw = $('#news-widget > .body')
-    tpl = nw.find('.card:eq(0)')
-
-    nw.empty()
-
-    for key, article of news
-      a = tpl.clone()
-      a.find('.card-title').text(article.title)
-      a.find('.card-text').html(article.content)
-      if !!article.link
-        a.find('.card-link').attr('href', article.link).text(article.link)
-      else
-        a.find('.card-link').remove()
-
-      
-      a.removeClass('hidden')
-      nw.prepend(a)
 
 
 

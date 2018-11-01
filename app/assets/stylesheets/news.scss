@@ -27,7 +27,17 @@
     .card a, .card-title, .card-body, blockquote{
         color: #ffffff;
     }
-
+    .card-title{
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    time{
+        font-size: 1rem;
+        font-style: italic;
+        &::before{
+            content: ' - ';
+        }
+    }
     .card-body{
         pre{
             color: #000000;

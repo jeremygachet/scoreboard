@@ -5,7 +5,7 @@ class Validation < ApplicationRecord
     validates :team, uniqueness: { scope: :exo, message: 'Cette équipe a déjà validé cet exercice' }
 
 
-    after_save :update_team_total_score, :log_score 
+    after_save :update_team_total_score, :log_score, 
 
     # save the whole current status of validations
     # in json
