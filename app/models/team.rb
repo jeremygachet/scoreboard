@@ -1,6 +1,9 @@
 class Team < ApplicationRecord
     validates :name, presence: true
 
+    has_one_attached :logo
+
+
     after_save    :expire_cache
     after_destroy :expire_cache
 
@@ -9,7 +12,7 @@ class Team < ApplicationRecord
     end
 
     def self.all_cached
-        Rails.cache.fetch('Team.all.asc') {all.order(name: :asc) }
+        Rails.cache.fetch('Team.all.asc') {all.includes(logo_attachment: :blob).order(name: :asc) }
     end
 
     def expire_cache

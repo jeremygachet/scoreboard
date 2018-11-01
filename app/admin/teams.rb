@@ -3,7 +3,7 @@ ActiveAdmin.register Team do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :name, :company
+permit_params :name, :company, :logo
 #
 # or
 #
@@ -16,7 +16,22 @@ permit_params :name, :company
         f.inputs do
             f.input :name
             f.input :company
+            f.input :logo, as: :file
         end
         actions
     end
+
+    show do 
+        attributes_table do
+
+            row :name
+            row :company
+            row :logo do |t|
+                image_tag t.logo.variant(resize: '250x250>').processed  # on-demand processing
+            end
+            row :created_at
+            row :updated_at
+        end
+    end
+
 end
