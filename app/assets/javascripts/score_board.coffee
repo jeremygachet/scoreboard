@@ -60,15 +60,25 @@ $(document).ready ->
 
 
   update_scores = ->
-    $.get '/api/v1/score', (data) ->
-      score  = data
-      update_score_board(score)
+    $.ajax '/api/v1/score',
+      type: 'GET'
+      dataType: 'json'
+      ifModified: true
+      success: ( score, textStatus, jqXHR ) ->
+        if 'notmodified' != textStatus
+          update_score_board(score)
+
 
     
   init_teams = ->
-    $.get '/api/v1/teams', (teams) ->
-     boats = init_boats(teams)
-     update_scores()
+    $.ajax '/api/v1/teams',
+      type: 'GET'
+      dataType: 'json'
+      ifModified: true
+      success: ( teams, textStatus, jqXHR ) ->
+        if 'notmodified' != textStatus
+          boats = init_boats(teams)
+          update_scores()
 
 
   init_teams()
