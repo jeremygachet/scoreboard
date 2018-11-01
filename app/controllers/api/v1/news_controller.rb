@@ -4,9 +4,9 @@ module Api::V1
      caches_action :index, expires_in: 10.minutes
 
     def index
-      Rails.cache.fetch([self.class.name, __method__]) do
-        render json: News.where(published: true).all.order(published_datetime: :asc).limit(200)
-      end
+      # Rails.cache.fetch([self.class.name, __method__]) do
+        render json: News.all_cached
+      # end
     end
 
     private

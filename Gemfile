@@ -45,6 +45,12 @@ gem 'devise'
 gem 'draper'
 gem 'pundit'
 
+
+
+#memcache
+gem 'dalli'
+gem 'memcachier'
+
 # ordering
 gem 'acts_as_list'
 
