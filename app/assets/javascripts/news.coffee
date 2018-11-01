@@ -30,7 +30,7 @@ $(document).ready ->
   update_news_dom = (news) ->
     nw = $('#news-widget > .body')
     tpl = nw.find('.card:eq(0)')
-    console.log 'renew updates'
+
     nw.empty()
 
     for key, article of news

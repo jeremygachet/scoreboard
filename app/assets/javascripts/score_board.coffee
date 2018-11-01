@@ -12,7 +12,6 @@ $(document).ready ->
   update_score_board = (score) ->
     max_score = score.max_score
     boats = filter_teams(score.score)
-    console.log boats
     place_boats(boats)
     update_details(score.score)
 
