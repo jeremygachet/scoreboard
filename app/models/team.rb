@@ -8,7 +8,7 @@ class Team < ApplicationRecord
         Validation.joins(:exo).where(team_id: self[:id]).sum(:points)
     end
 
-    def all_cached
+    def self.all_cached
         Rails.cache.fetch('Team.all.asc') {all.order(name: :asc) }
     end
 

@@ -2,11 +2,11 @@ class ScoreLog < ApplicationRecord
     after_save    :expire_cache
     after_destroy :expire_cache
 
-    def last_cached
+    def self.last_cached
       Rails.cache.fetch('Scorelog.last.published') { where(published: true).last }
     end
 
-    def all_cached
+    def self.all_cached
         Rails.cache.fetch('Scorelog.all.published') { where(published: true).order(id: :desc).limit(200) }
     end
 
