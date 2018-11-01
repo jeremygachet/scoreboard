@@ -21,10 +21,6 @@ gem 'uglifier', '>= 1.3.0'
 #ws caching
 gem 'actionpack-action_caching'
 
-#redis
-gem 'redis', "~> 4.0"
-gem 'redis-rails'
-
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -104,10 +100,6 @@ group :test do
   gem 'chromedriver-helper'
 end
 
-
-group :production do
-  gem 'redis-rack-cache'
-end
 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
