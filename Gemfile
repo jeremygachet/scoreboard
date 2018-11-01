@@ -45,6 +45,10 @@ gem 'devise'
 gem 'draper'
 gem 'pundit'
 
+#rack attack
+gem 'rack-attack'
+gem "rack-timeout"
+
 
 
 #memcache
