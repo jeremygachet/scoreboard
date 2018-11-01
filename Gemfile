@@ -22,7 +22,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'actionpack-action_caching'
 
 #redis
-gem 'redis'
+gem 'redis', "~> 4.0"
 gem 'redis-rails'
 
 
