@@ -27,7 +27,9 @@ permit_params :name, :company, :logo
             row :name
             row :company
             row :logo do |t|
-                image_tag t.logo.variant(resize: '250x250>').processed  # on-demand processing
+                if t.logo.attached? 
+                    image_tag t.logo.variant(resize: '250x250>').processed  # on-demand processing
+                end
             end
             row :created_at
             row :updated_at
