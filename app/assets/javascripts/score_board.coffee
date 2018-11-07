@@ -115,10 +115,10 @@ $(document).ready ->
     columnDefs = [
       { headerName: "team", field: "teamName" }
     ]
+    columnDefs.push( { headerName: 'Total Score', field: 'score' } )
+
     for k, v of exos
        columnDefs.push( { headerName: v.name, field: 'e-' + v.id } )
-    
-    columnDefs.push( { headerName: 'Total Score', field: 'score' } )
 
     columnDefs
 
