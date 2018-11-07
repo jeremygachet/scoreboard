@@ -35,9 +35,9 @@ $(document).ready ->
     for key, t of teams
       boats[t.id] =
         id: t.id
-        image: null
+        logo: t.logo
         team: t.name
-        score: if t.total_score? then t.total_score else 0
+        total_score: if t.total_score? then t.total_score else 0
       
       b = $('div#boat-' + t.id)
       if b.length == 0
@@ -50,10 +50,13 @@ $(document).ready ->
     b.attr('id', 'boat-' + boat.id )
        .attr('team-name', boat.name)
        .attr('team-id', boat.id)
-       .find('.boat-name')
+       .find('.boat-name .name')
        .text(boat.name)
+    b.find('.boat-logo').css('background-image', "url('" + boat.logo + "')")
+    b.find('.boat-name .score').text(boat.total_score)
     b.removeClass('hidden')
     $('#sea').append(b)
+    b.css({ top: ((b.height() + 30) * (boat.id - 1)) + 'px' })
     b
 
 

@@ -51,3 +51,21 @@ $(document).ready ->
   setInterval () ->
     update_news()
   , (1000 * 60 * 10)
+
+
+
+
+
+  #hide show news
+  $('#news-widget .close').click( ->
+     $(this).hide()
+     $('#news-widget').css('height', '8rem')
+     .find('.body').hide()
+     $('#news-widget .open').removeClass('hidden')
+  )
+  $('#news-widget .open').click( ->
+     $(this).addClass('hidden')
+     $('#news-widget').css('height', '40rem')
+     .find('.body').show()
+     $('#news-widget .close').show()
+  )

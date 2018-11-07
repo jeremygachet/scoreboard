@@ -1,49 +1,118 @@
 // Place all the styles related to the score_board controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-body{
-    &.scoreboard{
-        background: image-url('krakathon_mapv2.jpg') no-repeat;
-        background-size: cover;
-    }
-}
-.hidden{
-    display: none;
-}
-#scoreboard{
-    position: relative;
-    display: flex;
-    width: 90%;
-    .boat{
-        width: 4rem;
-        height: 4rem;
-        background: #ff0000;
-        border: 1px solid #000000;
-        position: relative;
-        margin-bottom: 0.5rem;
+$break-small: 600px;
 
-        .boat-name{
-            width: 4rem;
-            background: #fff000;
+#krakathon-logo {
+    img{
+        width: 11%;
+        margin: 2rem;
+        position: absolute;
+        @media only screen and (max-width: $break-small) {
+            width: 20%;
+            margin: 2rem;
+            position: absolute;
         }
     }
-    #sea{
-        width: 100%;
+    
+}
+
+
+
+body{
+    &.scoreboard{
+        background: image-url('krakathon_mapv2.jpg') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    .hidden{
+        display: none;
+    }
+    #scoreboard{
         position: relative;
-    }
-    #map{
-        width: 10rem;
-        height: 20rem;
+        display: flex;
+        width: 70%;
+        .boat{
+            width: 20rem;
+            height: 20rem;
+            background: image-url('krakaboat.png') no-repeat;
+            background-size: contain;
+            position: absolute;
+            margin-bottom: 0.5rem;
+            @media only screen and (max-width: $break-small) {
+                width: 10rem;
+                height: 10rem;
+            }
+            .boat-logo{
+                width: 33%;
+                height: 34%;
+                position: absolute;
+                background-repeat: no-repeat;
+                background-position: center center;
+                top: 22%;
+                left: 20%;        
+                background-size: contain;
+            }
+            .boat-name{
+                width: 4rem;
+                background-color: rgba(0, 0, 0, 0.5);
+                color: #ffffff;
+                position: absolute;
+                top: 94%;
+                width: 100%;
+                height: 4rem;
+                text-align: center;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                .score{
+                    font-weight: bold;
+                }
+            }
+        }
+        #sea{
+            width: 100%;
+            position: relative;
+        }
+        #map{
+            width: 10rem;
+            height: 20rem;
+
+        }
+    
+
 
     }
+    #grid-details{
+        height: 300px;
+    }
+    #open-grid-details{
+        color: #588446;
+        position: fixed;
+        bottom: 2rem;
+        background: image-url('board.png') no-repeat;
+        background-size: cover;
+        height: 14rem;
+        width: 20rem;
+        vertical-align: middle;
+        display: table-row;
+        padding-top: 6rem;
+        font-weight: bold;
+        font-size: 1.7rem;
+        margin-left: calc(50% - 10em);
+        @media only screen and (max-width: $break-small) {
+            margin-left: 2rem;
+            width: 15rem;
+            padding-top: 4.5rem;
+            height: 10rem;
+            font-size: 1.3rem;
+        }
+
+    }
+
    
-
-
-}
-#grid-details{
-    height: 300px;
-}
-#open-grid-details{
-    position: fixed;
-    bottom: 2rem;
+    
 }

@@ -1,7 +1,13 @@
 // Place all the styles related to the News controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$break-small: 600px;
+
 #news-widget {
+    @media only screen and (max-width: $break-small) {
+        width: 50%;
+        height: 40rem;
+    }
     position: absolute;
     right: 1rem;
     bottom: 1rem;
@@ -13,7 +19,17 @@
     border-radius: 1rem;
     padding: 1rem;
     color: #ffffff;
-
+    .close{
+        color: #ffffff;
+        font-size: 36px;
+        opacity: 1;
+    }
+    .open{
+        position: absolute;
+        right: 1rem;
+        font-size: 32px;
+        cursor: pointer;  
+    }
     .body{
         overflow: auto;
         height: 30rem;
