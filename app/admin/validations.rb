@@ -1,5 +1,4 @@
 ActiveAdmin.register Validation do
-    include Pundit
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -26,6 +25,14 @@ includes :team, :exo
         end
         column :created_at
     end
+
+    sidebar :scores do
+        teams = Team.order(total_score: :desc).pluck :name, :total_score
+        render 'scores_sidebar', { teams: teams }
+
+    end
+
+
 
 
 end

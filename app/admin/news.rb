@@ -1,8 +1,4 @@
 ActiveAdmin.register News do
-    include Pundit
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
  permit_params :title, :content, :published, :published_datetime, :link
 #
 # or

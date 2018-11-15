@@ -43,12 +43,12 @@ gem 'activeadmin_addons'
 # Plus integrations with:
 gem 'devise'
 gem 'draper'
-gem 'pundit'
 
 #rack attack
 gem 'rack-attack'
 gem "rack-timeout"
 
+gem 'cancancan', '~> 2.0'
 
 
 #memcache

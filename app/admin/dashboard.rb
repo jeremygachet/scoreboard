@@ -1,6 +1,8 @@
-include Pundit
 ActiveAdmin.register_page "Dashboard" do
 
+  def index
+    authorize :dashboards, :index?
+  end
 
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
 
@@ -12,24 +14,11 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
 
-    # Here is an example of a simple dashboard with columns and panels.
-    #
-    # columns do
-    #   column do
-    #     panel "Recent Posts" do
-    #       ul do
-    #         Post.recent(5).map do |post|
-    #           li link_to(post.title, admin_post_path(post))
-    #         end
-    #       end
-    #     end
-    #   end
-
-    #   column do
-    #     panel "Info" do
-    #       para "Welcome to ActiveAdmin."
-    #     end
-    #   end
-    # end
+    controller do
+      before_filter :authorize_index, only: :index
+      def authorize_index
+        policy_scope(User)
+      end
+    end
   end # content
 end
