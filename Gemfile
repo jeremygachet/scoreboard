@@ -23,6 +23,8 @@ gem 'actionpack-action_caching'
 
 #interactors
 gem "interactor", "~> 3.0"
+gem "interactor-rails", "~> 2.0"
+
 
 
 # Use CoffeeScript for .coffee assets and views
