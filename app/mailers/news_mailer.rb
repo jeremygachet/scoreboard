@@ -1,0 +1,2 @@
+class NewsMailer < ApplicationMailer
+end
