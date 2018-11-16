@@ -1,11 +1,12 @@
 class Team < ApplicationRecord
-    validates :name, presence: true
 
     has_one_attached :logo
-
+    has_many :teammate, inverse_of: :team
 
     after_save    :expire_cache
     after_destroy :expire_cache
+
+    validates :name, presence: true
 
     def count_total_score
         Validation.joins(:exo).where(team_id: self[:id]).sum(:points)

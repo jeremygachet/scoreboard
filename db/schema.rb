@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_15_151440) do
+ActiveRecord::Schema.define(version: 2018_11_16_070414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,17 @@ ActiveRecord::Schema.define(version: 2018_11_15_151440) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "max_score"
+  end
+
+  create_table "teammates", force: :cascade do |t|
+    t.bigint "team_id"
+    t.string "firstname"
+    t.string "lastname"
+    t.string "email"
+    t.integer "tel"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_teammates_on_team_id"
   end
 
   create_table "teams", force: :cascade do |t|
