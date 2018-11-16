@@ -21,6 +21,9 @@ gem 'uglifier', '>= 1.3.0'
 #ws caching
 gem 'actionpack-action_caching'
 
+#interactors
+gem "interactor", "~> 3.0"
+
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
