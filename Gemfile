@@ -25,6 +25,8 @@ gem 'actionpack-action_caching'
 gem "interactor", "~> 3.0"
 gem "interactor-rails", "~> 2.0"
 
+#sendgrid
+gem 'sendgrid-ruby'
 
 
 # Use CoffeeScript for .coffee assets and views
