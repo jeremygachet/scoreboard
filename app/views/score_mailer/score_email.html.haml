@@ -1,0 +1,10 @@
+%h3 Last validation
+%p=@last_validation.team.name+' -> '+@last_validation.exo.name
+
+
+%h3 Score Board
+%ol
+    - @scoreboard.each do |t|
+        %li 
+            =t[0]+' - '
+            %strong=(t[1]||0).to_s

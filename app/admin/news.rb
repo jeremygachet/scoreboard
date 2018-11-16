@@ -46,7 +46,7 @@ form do |f|
         f.input :content, as: :quill_editor
         f.input :link
         f.input :published
-        f.input :published_datetime, as: :date_time_picker
+        # f.input :published_datetime, as: :date_time_picker
     end
     actions
 end

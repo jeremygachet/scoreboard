@@ -1,5 +1,6 @@
 class ScoreLog < ApplicationRecord
     after_save    :expire_cache
+    after_save    :send_mails
     after_destroy :expire_cache
 
     def self.last_cached
@@ -8,6 +9,12 @@ class ScoreLog < ApplicationRecord
 
     def self.all_cached
         Rails.cache.fetch('Scorelog.all.published') { where(published: true).order(id: :desc).limit(200) }
+    end
+
+
+
+    def send_mails
+        PublishNews.call(type: 'score', score: self) if saved_change_to_published? && published?
     end
 
 
