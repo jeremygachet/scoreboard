@@ -69,7 +69,6 @@ gem 'acts_as_list'
 # allow haml for templating
 gem 'haml'
 
-gem 'dotenv-rails', groups: [:development, :test]
 
 #easy delaying
 gem 'delayed_job'
@@ -111,6 +110,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'
   # gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'dotenv-rails', groups: [:development, :test]
+
 end
 
 group :test do
