@@ -21,13 +21,15 @@ $break-small: 600px;
 
 body{
     &:before {
-        content: "";
+        content: " ";
         display: block;
         position: fixed;
         left: 0;
         top: 0;
-        width: 100%;
-        height: 100%;
+        bottom: 0;
+        right: 0;
+        height: 100vh;
+        width: 100vw;
         z-index: -10;
         background: url('krakathon_mapv2.jpg') no-repeat center center;
         -webkit-background-size: cover;
