@@ -12,7 +12,9 @@ class ScoreLog < ApplicationRecord
     end
 
 
-
+    ##
+    ## send email to all teammates after a new publishing
+    ##
     def send_mails
         PublishNews.call(type: 'score', score: self) if saved_change_to_published? && published?
     end
