@@ -103,6 +103,8 @@ GEM
     aws-sigv4 (1.0.3)
     bcrypt (3.1.12)
     bindex (0.5.0)
+    blamer (4.1.0)
+      activerecord
     bootsnap (1.3.2)
       msgpack (~> 1.0)
     bootstrap-sass (3.3.7)
@@ -358,6 +360,7 @@ DEPENDENCIES
   acts_as_list
   aws-sdk-s3
   bcrypt (~> 3.1.7)
+  blamer
   bootsnap (>= 1.1.0)
   bootstrap-sass (~> 3.3.7)
   byebug

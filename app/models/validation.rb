@@ -1,11 +1,15 @@
 class Validation < ApplicationRecord
     belongs_to :team
     belongs_to :exo
+    belongs_to :created_by, foreign_key: :created_by, class_name: 'User', optional: true
+    belongs_to :updated_by, foreign_key: :updated_by, class_name: 'User', optional: true
+
 
     validates :team, uniqueness: { scope: :exo, message: 'Cette équipe a déjà validé cet exercice' }
 
 
-    after_save :update_team_total_score, :log_score, 
+    before_create :add_creator
+    after_save :update_team_total_score, :log_score 
 
     # save the whole current status of validations
     # in json
@@ -23,6 +27,12 @@ class Validation < ApplicationRecord
     def update_team_total_score
         team.total_score = team.count_total_score
         team.save
+    end
+
+    def add_creator
+        unless  @current_user.nil?
+            self[:created_by] =  @current_user.id
+        end
     end
     
 end

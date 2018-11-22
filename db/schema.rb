@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_16_070414) do
+ActiveRecord::Schema.define(version: 2018_11_22_094531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,9 +132,15 @@ ActiveRecord::Schema.define(version: 2018_11_16_070414) do
     t.bigint "exo_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "created_by"
+    t.integer "updated_by"
+    t.index ["created_by"], name: "index_validations_on_created_by"
     t.index ["exo_id"], name: "index_validations_on_exo_id"
     t.index ["team_id", "exo_id"], name: "index_validations_on_team_id_and_exo_id", unique: true
     t.index ["team_id"], name: "index_validations_on_team_id"
+    t.index ["updated_by"], name: "index_validations_on_updated_by"
   end
 
+  add_foreign_key "validations", "users", column: "created_by"
+  add_foreign_key "validations", "users", column: "updated_by"
 end

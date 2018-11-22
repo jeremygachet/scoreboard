@@ -23,6 +23,7 @@ includes :team, :exo
         column :exo do |v|
             v.exo.name_points
         end
+        column :created_by
         column :created_at
     end
 
@@ -30,6 +31,14 @@ includes :team, :exo
         teams = Team.order(total_score: :desc).pluck :name, :total_score
         render 'scores_sidebar', { teams: teams }
 
+    end
+
+    form title: 'Valider un Exo' do |f|
+        f.inputs do
+            f.input :team
+            f.input :exo
+        end
+        actions
     end
 
 

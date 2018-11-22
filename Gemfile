@@ -65,6 +65,8 @@ gem 'memcachier'
 # ordering
 gem 'acts_as_list'
 
+# createdby and updatedby
+gem 'blamer'
 
 # allow haml for templating
 gem 'haml'
