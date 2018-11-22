@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
     if user.present?
       can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
-      can :manage, [Validation, News]
+      can [:create, :read], [Validation, News]
       can :read, [Team, Exo]
       if user.admin?
         can :manage, :all

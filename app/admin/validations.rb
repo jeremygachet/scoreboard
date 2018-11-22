@@ -3,7 +3,7 @@ ActiveAdmin.register Validation do
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
 permit_params :team_id, :exo_id
-actions :index, :show, :new, :create
+# actions :index, :show, :new, :create
 includes :team, :exo
 
 
@@ -25,6 +25,7 @@ includes :team, :exo
         end
         column :created_by
         column :created_at
+        actions
     end
 
     sidebar :scores do
